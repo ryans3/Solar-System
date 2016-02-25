@@ -106,6 +106,7 @@ var game = (function () {
         sun.add(pryanPivObj);
         sun.add(pamirPivObj);
         sun.add(pfranPivObj);
+        sun.add(pgerPivObj);
         scene.add(sun);
         console.log("Added Sun Primitive to the scene");
         //Add a Planet Dan to the Scene
@@ -135,10 +136,18 @@ var game = (function () {
         //Add a Planet Francis to the Scene
         pfranGeometry = new SphereGeometry(0.5, 20, 10);
         pfranMaterial = new LambertMaterial({ color: 0x0C090A });
-        pfran = new gameObject(pfranGeometry, pfranMaterial, 0, 0, 40);
+        pfran = new gameObject(pfranGeometry, pfranMaterial, 0, 0, 30);
         pfran.name = "The Blacker Sun";
         pfranPivObj.add(pfran);
         scene.add(pfranPivObj);
+        console.log("Added Blacker Sun Primitive to the scene");
+        //Add a Planet Geri to the Scene
+        pgerGeometry = new SphereGeometry(1, 10, 50);
+        pgerMaterial = new LambertMaterial({ color: 0xFFFFFF });
+        pger = new gameObject(pgerGeometry, pgerMaterial, 0, 0, 15);
+        pger.name = "The White Sun";
+        pgerPivObj.add(pger);
+        scene.add(pgerPivObj);
         console.log("Added Blacker Sun Primitive to the scene");
         //////////////////////////////////////////////////////////////
         // setup first person controls
@@ -202,6 +211,7 @@ var game = (function () {
         pryanPivObj.rotation.y += control.rotationSpeed * 0.05;
         pamirPivObj.rotation.y += control.rotationSpeed * 0.08;
         pfranPivObj.rotation.y += control.rotationSpeed * 0.04;
+        pgerPivObj.rotation.y += control.rotationSpeed * 1.5;
         firstPersonControls.update(delta);
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
