@@ -67,6 +67,7 @@ var game = (function () {
     var pfranPivObj = new THREE.Object3D();
     var pfranRings;
     var pfranRingsMaterial;
+    var pfranRingsPivObj = new THREE.Object3D();
     var pken;
     var pkenMaterial;
     var pkenGeometry;
@@ -106,6 +107,7 @@ var game = (function () {
         sunMaterial = new LambertMaterial({ color: 0xff0000 });
         sun = new gameObject(sphereGeometry, sphereMaterial, 0, 0, 0);
         sun.name = "The Red Sun";
+        sun.add(pfranRingsPivObj);
         sun.add(pkenPivObj);
         sun.add(pdanPivObj);
         sun.add(pryanPivObj);
@@ -116,7 +118,7 @@ var game = (function () {
         console.log("Added Sun Primitive to the scene");
         //Add a Planet Dan to the Scene
         pdanGeometry = new SphereGeometry(1.5, 20, 20);
-        pdanMaterial = new LambertMaterial({ color: 0xff0000 });
+        pdanMaterial = new LambertMaterial({ color: 0x800080 });
         pdan = new gameObject(pdanGeometry, pdanMaterial, 0, 0, 5);
         pdan.name = "The Asian Sun";
         pdanPivObj.add(pdan);
@@ -154,8 +156,10 @@ var game = (function () {
         pfranPivObj.add(pfran);
         scene.add(pfranPivObj);
         console.log("Added Blacker Sun Primitive to the scene");
-        var rung = new RingGeometry(1, 5, 32);
+        var rung = new RingGeometry(10, 5, 32);
         pfranRingsMaterial = new LambertMaterial({ color: 0xFFFFFF });
+        pfranPivObj.add(pfranRings);
+        scene.add(pfranRingsPivObj);
         console.log("The White Rings");
         //Add a Planet Geri to the Scene
         pgerGeometry = new SphereGeometry(1, 10, 50);
