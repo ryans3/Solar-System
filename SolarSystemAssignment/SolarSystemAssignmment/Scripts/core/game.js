@@ -118,18 +118,18 @@ var game = (function () {
         //Add a Planet Ryan to the Scene
         pryanGeometry = new SphereGeometry(1, 15, 20);
         pryanMaterial = new LambertMaterial({ color: 0xa9a9a9 });
-        pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 5);
+        pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 9);
         pryan.name = "The Black Sun";
         pryanPivObj.add(pryan);
         scene.add(pryanPivObj);
         console.log("Added Black Sun Primitive to the scene");
         //Add a Planet Amir to the Scene
-        pamirGeometry = new SphereGeometry(1, 15, 20);
-        pamirMaterial = new LambertMaterial({ color: 0x66CDAA });
-        pamir = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 5);
+        pamirGeometry = new SphereGeometry(3, 20, 20);
+        pamirMaterial = new LambertMaterial({ color: 0xA52A2A });
+        pamir = new gameObject(pamirGeometry, pamirMaterial, 0, 0, 20);
         pamir.name = "The Brown Sun";
         pamirPivObj.add(pamir);
-        scene.add(pryanPivObj);
+        scene.add(pamirPivObj);
         console.log("Added Brown Sun Primitive to the scene");
         //////////////////////////////////////////////////////////////
         // setup first person controls
@@ -190,6 +190,8 @@ var game = (function () {
         var delta = clock.getDelta();
         sphere.rotation.y += control.rotationSpeed;
         pdanPivObj.rotation.y += control.rotationSpeed * 0.1;
+        pryanPivObj.rotation.y += control.rotationSpeed * 0.05;
+        pamirPivObj.rotation.y += control.rotationSpeed * 0.08;
         firstPersonControls.update(delta);
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
