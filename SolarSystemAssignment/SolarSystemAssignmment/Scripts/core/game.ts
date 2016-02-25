@@ -10,6 +10,7 @@ import BoxGeometry = THREE.BoxGeometry;
 import CubeGeometry = THREE.CubeGeometry;
 import PlaneGeometry = THREE.PlaneGeometry;
 import SphereGeometry = THREE.SphereGeometry;
+import RingGeometry = THREE.RingGeometry;
 import Geometry = THREE.Geometry;
 import AxisHelper = THREE.AxisHelper;
 import LambertMaterial = THREE.MeshLambertMaterial;
@@ -43,6 +44,7 @@ var game = (() => {
     var plane: Mesh;
     var sphere: Mesh;
     var sphereGeometry: SphereGeometry;
+    var ringGeometry: RingGeometry;
     //sun
     var sun:Mesh;
     var sunMaterial:LambertMaterial;
@@ -73,6 +75,13 @@ var game = (() => {
     var pfranMaterial:LambertMaterial;
     var pfranGeometry:SphereGeometry;
     var pfranPivObj = new THREE.Object3D();
+    
+    var pfranRings:Mesh;
+    var pfranRingsMaterial:LambertMaterial;
+    
+    
+    
+    
     
     var pken:Mesh;
     var pkenMaterial:LambertMaterial;
@@ -174,13 +183,17 @@ var game = (() => {
         console.log("Added Brown Sun Primitive to the scene");
         
         //Add a Planet Francis to the Scene
-        pfranGeometry = new SphereGeometry(0.5, 20, 10);
+        pfranGeometry = new SphereGeometry(2.5, 20, 10);
         pfranMaterial = new LambertMaterial({ color: 0x0C090A });
         pfran = new gameObject(pfranGeometry, pfranMaterial, 0, 0, 30);
         pfran.name = "The Blacker Sun";
         pfranPivObj.add(pfran)
         scene.add(pfranPivObj);
         console.log("Added Blacker Sun Primitive to the scene");
+        var rung = new RingGeometry(1, 5, 32);
+        pfranRingsMaterial = new LambertMaterial({ color: 0xFFFFFF})
+        console.log("The White Rings");
+        
         
         //Add a Planet Geri to the Scene
         pgerGeometry = new SphereGeometry(1, 10, 50);
