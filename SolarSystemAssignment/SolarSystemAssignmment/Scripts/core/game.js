@@ -102,6 +102,7 @@ var game = (function () {
         sunMaterial = new LambertMaterial({ color: 0xff0000 });
         sun = new gameObject(sphereGeometry, sphereMaterial, 0, 0, 0);
         sun.name = "The Red Sun";
+        sun.add(pkenPivObj);
         sun.add(pdanPivObj);
         sun.add(pryanPivObj);
         sun.add(pamirPivObj);
@@ -121,10 +122,18 @@ var game = (function () {
         pryanGeometry = new SphereGeometry(1, 15, 20);
         pryanMaterial = new LambertMaterial({ color: 0x2B1B17 });
         pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 9);
-        pryan.name = "The Black Sun";
+        pryan.name = "The Blue Sun";
         pryanPivObj.add(pryan);
         scene.add(pryanPivObj);
-        console.log("Added Black Sun Primitive to the scene");
+        console.log("Added Blue Sun Primitive to the scene");
+        //Add a Planet Kevin to the Scene
+        pkenGeometry = new SphereGeometry(1.5, 20, 20);
+        pkenMaterial = new LambertMaterial({ color: 0xffff00 });
+        pken = new gameObject(pkenGeometry, pkenMaterial, 0, 0, 5);
+        pken.name = "The Other Asian Sun";
+        pkenPivObj.add(pken);
+        scene.add(pkenPivObj);
+        console.log("Added Other Asian Sun Primitive to the scene");
         //Add a Planet Amir to the Scene
         pamirGeometry = new SphereGeometry(3, 20, 20);
         pamirMaterial = new LambertMaterial({ color: 0xA52A2A });
@@ -148,7 +157,7 @@ var game = (function () {
         pger.name = "The White Sun";
         pgerPivObj.add(pger);
         scene.add(pgerPivObj);
-        console.log("Added Blacker Sun Primitive to the scene");
+        console.log("Added White Sun Primitive to the scene");
         //////////////////////////////////////////////////////////////
         // setup first person controls
         firstPersonControls = new FirstPersonControls(sphere);
@@ -212,6 +221,7 @@ var game = (function () {
         pamirPivObj.rotation.y += control.rotationSpeed * 0.08;
         pfranPivObj.rotation.y += control.rotationSpeed * 0.04;
         pgerPivObj.rotation.y += control.rotationSpeed * 1.5;
+        pkenPivObj.rotation.y += control.rotationSpeed * 0.09;
         firstPersonControls.update(delta);
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
