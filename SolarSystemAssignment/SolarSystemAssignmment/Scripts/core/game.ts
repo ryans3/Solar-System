@@ -158,7 +158,7 @@ var game = (() => {
         //Add a Planet Kevin to the Scene
         pkenGeometry = new SphereGeometry(1.5, 20, 20);
         pkenMaterial = new LambertMaterial({ color: 0xffff00 });
-        pken = new gameObject(pkenGeometry, pkenMaterial, 0, 0, 5);
+        pken = new gameObject(pkenGeometry, pkenMaterial, 0, 0, 12);
         pken.name = "The Other Asian Sun";
         pkenPivObj.add(pken)
         scene.add(pkenPivObj);
