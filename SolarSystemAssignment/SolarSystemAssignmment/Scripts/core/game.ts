@@ -131,6 +131,7 @@ var game = (() => {
         sun.add(pdanPivObj);
         sun.add(pryanPivObj);
         sun.add(pamirPivObj);
+        sun.add(pfranPivObj);
         scene.add(sun);
         console.log("Added Sun Primitive to the scene");
         
@@ -145,7 +146,7 @@ var game = (() => {
         
         //Add a Planet Ryan to the Scene
         pryanGeometry = new SphereGeometry(1, 15, 20);
-        pryanMaterial = new LambertMaterial({ color: 0xa9a9a9 });
+        pryanMaterial = new LambertMaterial({ color: 0x2B1B17 });
         pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 9);
         pryan.name = "The Black Sun";
         pryanPivObj.add(pryan)
@@ -161,6 +162,14 @@ var game = (() => {
         scene.add(pamirPivObj);
         console.log("Added Brown Sun Primitive to the scene");
         
+        //Add a Planet Francis to the Scene
+        pfranGeometry = new SphereGeometry(0.5, 20, 10);
+        pfranMaterial = new LambertMaterial({ color: 0x0C090A });
+        pfran = new gameObject(pfranGeometry, pfranMaterial, 0, 0, 40);
+        pfran.name = "The Blacker Sun";
+        pfranPivObj.add(pfran)
+        scene.add(pfranPivObj);
+        console.log("Added Blacker Sun Primitive to the scene");
          
         //////////////////////////////////////////////////////////////
         
@@ -239,6 +248,7 @@ var game = (() => {
         pdanPivObj.rotation.y += control.rotationSpeed * 0.1;
         pryanPivObj.rotation.y += control.rotationSpeed * 0.05;
         pamirPivObj.rotation.y += control.rotationSpeed * 0.08;
+        pfranPivObj.rotation.y += control.rotationSpeed * 0.04;
        
 
 
