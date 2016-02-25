@@ -54,15 +54,19 @@ var game = (function () {
     var pamir;
     var pamirMaterial;
     var pamirGeometry;
+    var pamirPivObj = new THREE.Object3D();
     var pger;
     var pgerMaterial;
     var pgerGeometry;
+    var pgerPivObj = new THREE.Object3D();
     var pfran;
     var pfranMaterial;
     var pfranGeometry;
+    var pfranPivObj = new THREE.Object3D();
     var pken;
     var pkenMaterial;
     var pkenGeometry;
+    var pkenPivObj = new THREE.Object3D();
     var sphereMaterial;
     var ambientLight;
     var spotLight;
@@ -100,6 +104,7 @@ var game = (function () {
         sun.name = "The Red Sun";
         sun.add(pdanPivObj);
         sun.add(pryanPivObj);
+        sun.add(pamirPivObj);
         scene.add(sun);
         console.log("Added Sun Primitive to the scene");
         //Add a Planet Dan to the Scene
@@ -111,13 +116,21 @@ var game = (function () {
         scene.add(pdanPivObj);
         console.log("Added Asian Sun Primitive to the scene");
         //Add a Planet Ryan to the Scene
-        pryanGeometry = new SphereGeometry(1.5, 20, 20);
-        pryanMaterial = new LambertMaterial({ color: 0xff0000 });
+        pryanGeometry = new SphereGeometry(1, 15, 20);
+        pryanMaterial = new LambertMaterial({ color: 0xa9a9a9 });
         pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 5);
-        pryan.name = "The Asian Sun";
+        pryan.name = "The Black Sun";
         pryanPivObj.add(pryan);
         scene.add(pryanPivObj);
         console.log("Added Black Sun Primitive to the scene");
+        //Add a Planet Amir to the Scene
+        pamirGeometry = new SphereGeometry(1, 15, 20);
+        pamirMaterial = new LambertMaterial({ color: 0x66CDAA });
+        pamir = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 5);
+        pamir.name = "The Brown Sun";
+        pamirPivObj.add(pamir);
+        scene.add(pryanPivObj);
+        console.log("Added Brown Sun Primitive to the scene");
         //////////////////////////////////////////////////////////////
         // setup first person controls
         firstPersonControls = new FirstPersonControls(sphere);

@@ -153,7 +153,7 @@ var game = (() => {
         console.log("Added Black Sun Primitive to the scene");
         
         //Add a Planet Amir to the Scene
-        pryanGeometry = new SphereGeometry(1, 15, 20);
+        pamirGeometry = new SphereGeometry(1, 15, 20);
         pamirMaterial = new LambertMaterial({ color: 0x66CDAA });
         pamir = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 5);
         pamir.name = "The Brown Sun";
