@@ -63,18 +63,22 @@ var game = (() => {
     var pamir:Mesh;
     var pamirMaterial:LambertMaterial;
     var pamirGeometry:SphereGeometry;
+    var pamirPivObj = new THREE.Object3D();
     
     var pger:Mesh;
     var pgerMaterial:LambertMaterial;
     var pgerGeometry:SphereGeometry;
+    var pgerPivObj = new THREE.Object3D();
     
     var pfran:Mesh;
     var pfranMaterial:LambertMaterial;
     var pfranGeometry:SphereGeometry;
+    var pfranPivObj = new THREE.Object3D();
     
     var pken:Mesh;
     var pkenMaterial:LambertMaterial;
     var pkenGeometry:SphereGeometry;
+    var pkenPivObj = new THREE.Object3D();
     
     
     
@@ -126,6 +130,7 @@ var game = (() => {
         sun.name = "The Red Sun";
         sun.add(pdanPivObj);
         sun.add(pryanPivObj);
+        sun.add(pamirPivObj);
         scene.add(sun);
         console.log("Added Sun Primitive to the scene");
         
@@ -139,13 +144,23 @@ var game = (() => {
         console.log("Added Asian Sun Primitive to the scene");
         
         //Add a Planet Ryan to the Scene
-        pryanGeometry = new SphereGeometry(1.5, 20, 20);
-        pryanMaterial = new LambertMaterial({ color: 0xff0000 });
+        pryanGeometry = new SphereGeometry(1, 15, 20);
+        pryanMaterial = new LambertMaterial({ color: 0xa9a9a9 });
         pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 5);
-        pryan.name = "The Asian Sun";
+        pryan.name = "The Black Sun";
         pryanPivObj.add(pryan)
         scene.add(pryanPivObj);
         console.log("Added Black Sun Primitive to the scene");
+        
+        //Add a Planet Amir to the Scene
+        pryanGeometry = new SphereGeometry(1, 15, 20);
+        pamirMaterial = new LambertMaterial({ color: 0x66CDAA });
+        pamir = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 5);
+        pamir.name = "The Brown Sun";
+        pamirPivObj.add(pamir)
+        scene.add(pryanPivObj);
+        console.log("Added Brown Sun Primitive to the scene");
+        
          
         //////////////////////////////////////////////////////////////
         
