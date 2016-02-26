@@ -107,7 +107,6 @@ var game = (function () {
         sunMaterial = new LambertMaterial({ color: 0xff0000 });
         sun = new gameObject(sphereGeometry, sphereMaterial, 0, 0, 0);
         sun.name = "The Red Sun";
-        sun.add(pfranRingsPivObj);
         sun.add(pkenPivObj);
         sun.add(pdanPivObj);
         sun.add(pryanPivObj);
@@ -126,49 +125,56 @@ var game = (function () {
         console.log("Added Asian Sun Primitive to the scene");
         //Add a Planet Ryan to the Scene
         pryanGeometry = new SphereGeometry(1, 15, 20);
-        pryanMaterial = new LambertMaterial({ color: 0x2B1B17 });
+        pryanMaterial = new LambertMaterial({ color: 0x0000FF });
         pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 9);
         pryan.name = "The Blue Sun";
         pryanPivObj.add(pryan);
         scene.add(pryanPivObj);
-        console.log("Added Blue Sun Primitive to the scene");
+        console.log("Added Blue Planet Primitive to the scene");
         //Add a Planet Kevin to the Scene
         pkenGeometry = new SphereGeometry(1.5, 20, 20);
         pkenMaterial = new LambertMaterial({ color: 0xffff00 });
         pken = new gameObject(pkenGeometry, pkenMaterial, 0, 0, 12);
-        pken.name = "The Other Asian Sun";
+        pken.name = "The Other Asian Planet";
         pkenPivObj.add(pken);
         scene.add(pkenPivObj);
-        console.log("Added Other Asian Sun Primitive to the scene");
+        console.log("Added Other Asian Planet Primitive to the scene");
         //Add a Planet Amir to the Scene
         pamirGeometry = new SphereGeometry(3, 20, 20);
         pamirMaterial = new LambertMaterial({ color: 0xA52A2A });
         pamir = new gameObject(pamirGeometry, pamirMaterial, 0, 0, 20);
-        pamir.name = "The Brown Sun";
+        pamir.name = "The Brown Planet";
         pamirPivObj.add(pamir);
         scene.add(pamirPivObj);
-        console.log("Added Brown Sun Primitive to the scene");
+        console.log("Added Brown Planet Primitive to the scene");
         //Add a Planet Francis to the Scene
         pfranGeometry = new SphereGeometry(2.5, 20, 10);
         pfranMaterial = new LambertMaterial({ color: 0x0C090A });
         pfran = new gameObject(pfranGeometry, pfranMaterial, 0, 0, 30);
-        pfran.name = "The Blacker Sun";
+        pfran.name = "The Blacker Planet";
+        //pfran.add(pfranRings);
+        pfranPivObj.add(pfranRingsPivObj);
         pfranPivObj.add(pfran);
         scene.add(pfranPivObj);
-        console.log("Added Blacker Sun Primitive to the scene");
-        var rung = new RingGeometry(10, 5, 32);
-        pfranRingsMaterial = new LambertMaterial({ color: 0xFFFFFF });
-        pfranPivObj.add(pfranRings);
-        scene.add(pfranRingsPivObj);
+        console.log("Added Blacker Planet Primitive to the scene");
+        //Rings addition to Planet Francis
+        var rung = new THREE.RingGeometry(23, 35, 32);
+        var bat = new MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide });
+        pfranRings = new THREE.Mesh(rung, bat);
+        //pfranRings.position.set(0,10,0);
+        scene.add(pfranRings);
+        pfran.add(pfranRings);
+        //pfranPivObj.add(pfranRings);
+        //scene.add(pfranRings);
         console.log("The White Rings");
         //Add a Planet Geri to the Scene
         pgerGeometry = new SphereGeometry(1, 10, 50);
         pgerMaterial = new LambertMaterial({ color: 0xFFFFFF });
         pger = new gameObject(pgerGeometry, pgerMaterial, 0, 0, 15);
-        pger.name = "The White Sun";
+        pger.name = "The White Planet";
         pgerPivObj.add(pger);
         scene.add(pgerPivObj);
-        console.log("Added White Sun Primitive to the scene");
+        console.log("Added White Planet Primitive to the scene");
         //////////////////////////////////////////////////////////////
         // setup first person controls
         firstPersonControls = new FirstPersonControls(sphere);
@@ -185,16 +191,17 @@ var game = (function () {
         sphere.add(axes);
         console.log("Added Axis Helper to scene...");
         // Add an AmbientLight to the scene
-        //ambientLight = new AmbientLight(0x090909);
-        //scene.add(ambientLight);
-        //console.log("Added an Ambient Light to Scene");
+        ambientLight = new AmbientLight(0x090909);
+        scene.add(ambientLight);
+        console.log("Added an Ambient Light to Scene");
         // Add a SpotLight to the scene
         spotLight = new SpotLight(0xffffff);
         spotLight.position.set(5.6, 23.1, 5.4);
         spotLight.rotation.set(-0.8, 42.7, 19.5);
         spotLight.intensity = 2;
         spotLight.angle = 60 * (Math.PI / 180);
-        spotLight.distance = 200;
+        spotLight.distance = 400;
+        spotLight.decay = 0.1;
         spotLight.castShadow = true;
         spotLight.shadowCameraNear = 1;
         spotLight.shadowMapHeight = 2048;
@@ -233,6 +240,7 @@ var game = (function () {
         pfranPivObj.rotation.y += control.rotationSpeed * 0.04;
         pgerPivObj.rotation.y += control.rotationSpeed * 1.5;
         pkenPivObj.rotation.y += control.rotationSpeed * 0.09;
+        pfranRingsPivObj.rotation.set(0, 32, 0);
         firstPersonControls.update(delta);
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
