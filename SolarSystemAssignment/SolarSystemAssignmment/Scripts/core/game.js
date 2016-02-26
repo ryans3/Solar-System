@@ -57,6 +57,11 @@ var game = (function () {
     var pamirMaterial;
     var pamirGeometry;
     var pamirPivObj = new THREE.Object3D();
+    //Planet Amir Moons
+    var pamirMoon;
+    var pamirMoonMaterial;
+    var pamirMoonGeometry;
+    var pamirMoonPivObj = new THREE.Object3D();
     var pger;
     var pgerMaterial;
     var pgerGeometry;
@@ -65,6 +70,8 @@ var game = (function () {
     var pfranMaterial;
     var pfranGeometry;
     var pfranPivObj = new THREE.Object3D();
+    var focusToggle;
+    //Planet francis Rings
     var pfranRings;
     var pfranRingsMaterial;
     var pfranRingsPivObj = new THREE.Object3D();
@@ -147,6 +154,14 @@ var game = (function () {
         pamirPivObj.add(pamir);
         scene.add(pamirPivObj);
         console.log("Added Brown Planet Primitive to the scene");
+        //Planet amir MOONS
+        pamirMoonGeometry = new SphereGeometry(1, 30, 30);
+        pamirMoonMaterial = new LambertMaterial({ color: 0x00FF00 });
+        pamirMoon = new gameObject(pamirMoonGeometry, pamirMoonMaterial, 0, 1, 5);
+        pamirMoon.name = "Crappy Brown Moon";
+        pamirMoonPivObj.add(pamirMoon);
+        pamir.add(pamirMoonPivObj);
+        //scene.add();
         //Add a Planet Francis to the Scene
         pfranGeometry = new SphereGeometry(2.5, 20, 10);
         pfranMaterial = new LambertMaterial({ color: 0x0C090A });
@@ -157,7 +172,7 @@ var game = (function () {
         scene.add(pfranPivObj);
         console.log("Added Blacker Planet Primitive to the scene");
         //Rings addition to Planet Francis
-        var rung = new THREE.RingGeometry(23, 35, 32);
+        var rung = new THREE.RingGeometry(4.5, 7, 25);
         var bat = new MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide });
         pfranRings = new THREE.Mesh(rung, bat);
         scene.add(pfranRings);
@@ -217,6 +232,7 @@ var game = (function () {
     function addControl(controlObject) {
         gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
         gui.add(controlObject, 'zoom', 0, 100);
+        gui.add(controlObject, 'f');
     }
     function addStatsObject() {
         stats = new Stats();
@@ -241,6 +257,13 @@ var game = (function () {
         //zoom in diagonally
         camera.position.y = control.zoom;
         camera.position.z = -control.zoom;
+        //focus on planet amir
+        if (focusToggle) {
+            camera.lookAt(pamir.position);
+        }
+        else {
+            camera.lookAt(new Vector3(0, 0, 0));
+        }
         firstPersonControls.update(delta);
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);

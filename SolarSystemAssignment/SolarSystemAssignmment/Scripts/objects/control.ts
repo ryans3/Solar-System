@@ -6,10 +6,12 @@ module objects {
         //PUBLIC INSTANCE VARIABLES +++++++++++++++++++++++++++
         public rotationSpeed:number;
         public zoom:number;
+        public f:boolean;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         constructor(rotationSpeed:number, zoom:number) {
            this.rotationSpeed = rotationSpeed;
            this.zoom = zoom;
+           this.f = false;
         }
         
         //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++

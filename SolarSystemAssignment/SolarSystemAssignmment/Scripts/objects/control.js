@@ -7,6 +7,7 @@ var objects;
         function Control(rotationSpeed, zoom) {
             this.rotationSpeed = rotationSpeed;
             this.zoom = zoom;
+            this.f = false;
         }
         return Control;
     })();
