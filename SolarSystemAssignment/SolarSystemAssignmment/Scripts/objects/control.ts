@@ -5,9 +5,11 @@ module objects {
     export class Control { 
         //PUBLIC INSTANCE VARIABLES +++++++++++++++++++++++++++
         public rotationSpeed:number;
+        public zoom:number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        constructor(rotationSpeed:number) {
+        constructor(rotationSpeed:number, zoom:number) {
            this.rotationSpeed = rotationSpeed;
+           this.zoom = zoom;
         }
         
         //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++

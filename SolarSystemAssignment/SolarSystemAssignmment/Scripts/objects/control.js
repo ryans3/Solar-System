@@ -4,8 +4,9 @@ var objects;
     // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
     var Control = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        function Control(rotationSpeed) {
+        function Control(rotationSpeed, zoom) {
             this.rotationSpeed = rotationSpeed;
+            this.zoom = zoom;
         }
         return Control;
     })();

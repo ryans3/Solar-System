@@ -119,15 +119,15 @@ var game = (function () {
         pdanGeometry = new SphereGeometry(1.5, 20, 20);
         pdanMaterial = new LambertMaterial({ color: 0x800080 });
         pdan = new gameObject(pdanGeometry, pdanMaterial, 0, 0, 5);
-        pdan.name = "The Asian Sun";
+        pdan.name = "The Asian Planet";
         pdanPivObj.add(pdan);
         scene.add(pdanPivObj);
-        console.log("Added Asian Sun Primitive to the scene");
+        console.log("Added Asian Planet Primitive to the scene");
         //Add a Planet Ryan to the Scene
         pryanGeometry = new SphereGeometry(1, 15, 20);
         pryanMaterial = new LambertMaterial({ color: 0x0000FF });
         pryan = new gameObject(pryanGeometry, pryanMaterial, 0, 0, 9);
-        pryan.name = "The Blue Sun";
+        pryan.name = "The Blue Planet";
         pryanPivObj.add(pryan);
         scene.add(pryanPivObj);
         console.log("Added Blue Planet Primitive to the scene");
@@ -152,7 +152,6 @@ var game = (function () {
         pfranMaterial = new LambertMaterial({ color: 0x0C090A });
         pfran = new gameObject(pfranGeometry, pfranMaterial, 0, 0, 30);
         pfran.name = "The Blacker Planet";
-        //pfran.add(pfranRings);
         pfranPivObj.add(pfranRingsPivObj);
         pfranPivObj.add(pfran);
         scene.add(pfranPivObj);
@@ -161,11 +160,8 @@ var game = (function () {
         var rung = new THREE.RingGeometry(23, 35, 32);
         var bat = new MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide });
         pfranRings = new THREE.Mesh(rung, bat);
-        //pfranRings.position.set(0,10,0);
         scene.add(pfranRings);
         pfran.add(pfranRings);
-        //pfranPivObj.add(pfranRings);
-        //scene.add(pfranRings);
         console.log("The White Rings");
         //Add a Planet Geri to the Scene
         pgerGeometry = new SphereGeometry(1, 10, 50);
@@ -187,8 +183,8 @@ var game = (function () {
         firstPersonControls.lon = -150;
         firstPersonControls.lat = 120;
         // add an axis helper to the scene
-        axes = new AxisHelper(20);
-        sphere.add(axes);
+        axes = new AxisHelper(50);
+        sun.add(axes);
         console.log("Added Axis Helper to scene...");
         // Add an AmbientLight to the scene
         ambientLight = new AmbientLight(0x090909);
@@ -210,7 +206,7 @@ var game = (function () {
         console.log("Added a SpotLight Light to Scene");
         // add controls
         gui = new GUI();
-        control = new Control(0.05);
+        control = new Control(0.05, 50);
         addControl(control);
         // Add framerate stats
         addStatsObject();
@@ -220,6 +216,7 @@ var game = (function () {
     }
     function addControl(controlObject) {
         gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
+        gui.add(controlObject, 'zoom', 0, 100);
     }
     function addStatsObject() {
         stats = new Stats();
@@ -241,6 +238,9 @@ var game = (function () {
         pgerPivObj.rotation.y += control.rotationSpeed * 1.5;
         pkenPivObj.rotation.y += control.rotationSpeed * 0.09;
         pfranRingsPivObj.rotation.set(0, 32, 0);
+        //zoom in diagonally
+        camera.position.y = control.zoom;
+        camera.position.z = -control.zoom;
         firstPersonControls.update(delta);
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
@@ -261,7 +261,7 @@ var game = (function () {
         camera = new PerspectiveCamera(45, config.Screen.RATIO, 0.1, 1000);
         //camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.x = 0.6;
-        camera.position.y = 100;
+        camera.position.y = 50;
         camera.position.z = -40.5;
         camera.lookAt(new Vector3(0, 0, 0));
         console.log("Finished setting up Camera...");
