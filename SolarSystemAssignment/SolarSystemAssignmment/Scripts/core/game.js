@@ -16,6 +16,7 @@ var MeshBasicMaterial = THREE.MeshBasicMaterial;
 var Material = THREE.Material;
 var Mesh = THREE.Mesh;
 var Object3D = THREE.Object3D;
+var DirectionalLight = THREE.DirectionalLight;
 var SpotLight = THREE.SpotLight;
 var PointLight = THREE.PointLight;
 var AmbientLight = THREE.AmbientLight;
@@ -82,6 +83,7 @@ var game = (function () {
     var sphereMaterial;
     var ambientLight;
     var spotLight;
+    var directionalLight;
     var control;
     var gui;
     var stats;
@@ -198,7 +200,7 @@ var game = (function () {
         firstPersonControls.lon = -150;
         firstPersonControls.lat = 120;
         // add an axis helper to the scene
-        axes = new AxisHelper(50);
+        axes = new AxisHelper(20);
         sun.add(axes);
         console.log("Added Axis Helper to scene...");
         // Add an AmbientLight to the scene
@@ -208,8 +210,9 @@ var game = (function () {
         // Add a SpotLight to the scene
         spotLight = new SpotLight(0xffffff);
         spotLight.position.set(5.6, 23.1, 5.4);
+        //spotLight.position.set(0, 0, 0);
         spotLight.rotation.set(-0.8, 42.7, 19.5);
-        spotLight.intensity = 2;
+        spotLight.intensity = 6;
         spotLight.angle = 60 * (Math.PI / 180);
         spotLight.distance = 400;
         spotLight.decay = 0.1;
@@ -217,8 +220,19 @@ var game = (function () {
         spotLight.shadowCameraNear = 1;
         spotLight.shadowMapHeight = 2048;
         spotLight.shadowMapWidth = 2048;
-        scene.add(spotLight);
+        //scene.add(spotLight);
         console.log("Added a SpotLight Light to Scene");
+        //add a Directional Light
+        directionalLight = new DirectionalLight(0xffffff);
+        directionalLight.position.set(5.6, 23.1, 5.4);
+        directionalLight.rotation.set(-0.8, 42.7, 19.5);
+        directionalLight.intensity = 6;
+        directionalLight.castShadow = true;
+        directionalLight.shadowCameraNear = 1;
+        directionalLight.shadowMapHeight = 2048;
+        directionalLight.shadowMapWidth = 2048;
+        //scene.add(directionalLight);
+        console.log("added directionalLight to the scene");
         // add controls
         gui = new GUI();
         control = new Control(0.05, 50);
@@ -251,20 +265,21 @@ var game = (function () {
         pryanPivObj.rotation.y += control.rotationSpeed * 0.05;
         pamirPivObj.rotation.y += control.rotationSpeed * 0.08;
         pfranPivObj.rotation.y += control.rotationSpeed * 0.04;
-        pgerPivObj.rotation.y += control.rotationSpeed * 1.5;
+        pgerPivObj.rotation.y += control.rotationSpeed * 1;
         pkenPivObj.rotation.y += control.rotationSpeed * 0.09;
+        pamirMoonPivObj.rotation.y += control.rotationSpeed * 1.2;
         pfranRingsPivObj.rotation.set(0, 32, 0);
         //zoom in diagonally
         camera.position.y = control.zoom;
         camera.position.z = -control.zoom;
         //focus on planet amir
-        if (focusToggle) {
+        if (control.f) {
             camera.lookAt(pamir.position);
         }
         else {
             camera.lookAt(new Vector3(0, 0, 0));
         }
-        firstPersonControls.update(delta);
+        //firstPersonControls.update(delta);
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
         // render the scene
