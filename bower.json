@@ -1,13 +1,13 @@
 {
-  "name": "comp392-lesson6",
+  "name": "comp392-Solar System",
   "authors": [
-    "Tom Tsiliopoulos <tsiliopoulos@hotmail.com>"
+    "Ryan Sterling <ryan.s3@hotmail.com>"
   ],
-  "description": "COMP392-Lesson6 for Advanced Graphics",
+  "description": "Solar System for Advanced Graphics",
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "homepage": "https://github.com/CentennialCollege/COMP392-Lesson6",
+  "homepage": "https://github.com/ryans3/Solar-System/blob/master/SolarSystemAssignment/SolarSystemAssignmment/index.html",
   "ignore": [
     "**/.*",
     "node_modules",

@@ -64,11 +64,12 @@ gulp.task("connect", function () {
     });
 });
 
-// This task opens Chrome within the local connect server
+/* This task opens Chrome within the local connect server
 gulp.task('open', function () {
     gulp.src('./index.html')
         .pipe(open({uri: 'http://localhost:8080', app: 'Google Chrome'}));
 });
+*/
 
 // This is the default task that runs everything
 gulp.task("default", ["transpile", "html", "css", "connect", "open", "watch"]);
