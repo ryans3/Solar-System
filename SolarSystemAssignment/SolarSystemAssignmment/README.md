@@ -1,3 +1,3 @@
-#COMP392-Lesson 6
+#Solar System
 
-COMP392-Lesson 6 for COMP392 - Advanced Graphics @ Centennial College
+Ryan Sterling-Assignment 2 for COMP392 - Advanced Graphics @ Centennial College

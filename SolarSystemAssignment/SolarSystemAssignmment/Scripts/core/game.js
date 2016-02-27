@@ -71,7 +71,6 @@ var game = (function () {
     var pfranMaterial;
     var pfranGeometry;
     var pfranPivObj = new THREE.Object3D();
-    var focusToggle;
     //Planet francis Rings
     var pfranRings;
     var pfranRingsMaterial;
@@ -174,7 +173,7 @@ var game = (function () {
         scene.add(pfranPivObj);
         console.log("Added Blacker Planet Primitive to the scene");
         //Rings addition to Planet Francis
-        var rung = new THREE.RingGeometry(4.5, 7, 25);
+        var rung = new THREE.RingGeometry(4.5, 7, 20);
         var bat = new MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide });
         pfranRings = new THREE.Mesh(rung, bat);
         scene.add(pfranRings);
@@ -220,7 +219,7 @@ var game = (function () {
         spotLight.shadowCameraNear = 1;
         spotLight.shadowMapHeight = 2048;
         spotLight.shadowMapWidth = 2048;
-        //scene.add(spotLight);
+        scene.add(spotLight);
         console.log("Added a SpotLight Light to Scene");
         //add a Directional Light
         directionalLight = new DirectionalLight(0xffffff);
@@ -268,7 +267,7 @@ var game = (function () {
         pgerPivObj.rotation.y += control.rotationSpeed * 1;
         pkenPivObj.rotation.y += control.rotationSpeed * 0.09;
         pamirMoonPivObj.rotation.y += control.rotationSpeed * 1.2;
-        pfranRingsPivObj.rotation.set(0, 32, 0);
+        pfranRingsPivObj.rotation.set(0, 0, 0);
         //zoom in diagonally
         camera.position.y = control.zoom;
         camera.position.z = -control.zoom;

@@ -1,7 +1,7 @@
 {
-  "name": "comp392-lesson6",
+  "name": "Ryan Sterling 300509648",
   "version": "1.0.0",
-  "description": "COMP392-Lesson 6 for Centennial College",
+  "description": "Assignment 2-Solar System for Centennial College",
   "main": "game.js",
   "dependencies": {
     "typescript": "^1.7.5"
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CentennialCollege/COMP392-Lesson6.git"
+    "url": "git+https://github.com/ryans3/Solar-System.git"
   },
-  "author": "Tom Tsiliopoulos",
+  "author": "Ryan Sterling",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CentennialCollege/COMP392-Lesson6/issues"
+    "url": "https://github.com/ryans3/Solar-System.git"
   },
-  "homepage": "https://github.com/CentennialCollege/COMP392-Lesson6#readme"
+  "homepage": "https://github.com/ryans3/Solar-System.index.html"
 }
