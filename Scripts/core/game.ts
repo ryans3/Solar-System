@@ -48,7 +48,7 @@ var game = (() => {
     var ringGeometry: RingGeometry;
     //sun
     var sun:Mesh;
-    var sunMaterial:LambertMaterial;
+    var sunMaterial:MeshBasicMaterial;
     var sunGeometry:SphereGeometry;
     
     //planets
@@ -99,6 +99,7 @@ var game = (() => {
     var sphereMaterial: LambertMaterial;
     var ambientLight: AmbientLight;
     var spotLight: SpotLight;
+    var pointLight: PointLight;
     var directionalLight:DirectionalLight;
     var control: Control;
     var gui: GUI;
@@ -140,8 +141,8 @@ var game = (() => {
         
         //Add a Sun to the Scene
         sunGeometry = new SphereGeometry(2.5, 32, 32);
-        sunMaterial = new LambertMaterial({ color: 0xff0000 });
-        sun = new gameObject(sphereGeometry, sphereMaterial, 0, 0, 0);
+        sunMaterial = new MeshBasicMaterial({ color: 0xff0000 });
+        sun = new gameObject(sphereGeometry, sunMaterial, 0, 0, 0);
         sun.name = "The Red Sun";
        
         
@@ -269,7 +270,7 @@ var game = (() => {
         spotLight.shadowCameraNear = 1;
         spotLight.shadowMapHeight = 2048;
         spotLight.shadowMapWidth = 2048;
-        scene.add(spotLight);
+        //scene.add(spotLight);
         console.log("Added a SpotLight Light to Scene");
         
         //add a Directional Light
@@ -283,6 +284,19 @@ var game = (() => {
         directionalLight.shadowMapWidth = 2048;
         //scene.add(directionalLight);
         console.log("added directionalLight to the scene");
+        
+        //add a Point Light
+        pointLight = new PointLight(0xffffff,6,100,1);
+        pointLight.position.set(0, 5, 0);
+        //directionalLight.rotation.set(-0.8, 42.7, 19.5);
+  
+        pointLight.castShadow = true;
+        pointLight.shadowCameraNear = 1;
+        pointLight.shadowMapHeight = 2048;
+        pointLight.shadowMapWidth = 2048;
+        scene.add(pointLight);
+        console.log("added point Light to the scene");
+    
     
     
         // add controls
