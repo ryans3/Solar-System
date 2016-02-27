@@ -189,16 +189,6 @@ var game = (function () {
         scene.add(pgerPivObj);
         console.log("Added White Planet Primitive to the scene");
         //////////////////////////////////////////////////////////////
-        // setup first person controls
-        firstPersonControls = new FirstPersonControls(sphere);
-        firstPersonControls.lookSpeed = 0.4;
-        firstPersonControls.movementSpeed = 10;
-        firstPersonControls.lookVertical = true;
-        firstPersonControls.constrainVertical = true;
-        firstPersonControls.verticalMin = 0;
-        firstPersonControls.verticalMax = 2.0;
-        firstPersonControls.lon = -150;
-        firstPersonControls.lat = 120;
         // add an axis helper to the scene
         axes = new AxisHelper(20);
         sun.add(axes);
